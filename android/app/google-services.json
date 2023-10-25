@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "975278610521",
+    "project_id": "movie-zone-ca331",
+    "storage_bucket": "movie-zone-ca331.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975278610521:android:de92eb87fc680a1fa77948",
+        "android_client_info": {
+          "package_name": "com.example.movie_zone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtTd1K-ZyM81rTJ6y6t8d2rwGzCc_qOsk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
