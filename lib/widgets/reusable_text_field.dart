@@ -8,12 +8,12 @@ import 'package:movie_zone/utility/app_spacing.dart';
 
 class ReusableTextField extends StatelessWidget {
   const ReusableTextField({
-    super.key, required this.headText, required this.hintText, required this.newController
+    super.key, required this.headText, required this.hintText, required this.newController, required this.validate
   });
   final String headText;
   final String hintText;
   final TextEditingController newController;
-
+  final FormFieldValidator validate;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,6 +29,7 @@ class ReusableTextField extends StatelessWidget {
         const SizedBox(height: AppSpacing.s5,),
         TextFormField(
           controller: newController ,
+          validator: validate,
           decoration:  InputDecoration(
               contentPadding: const EdgeInsets.only(top: 10,bottom: 10,left: 20),
               border: OutlineInputBorder(

@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:movie_zone/screens/login_screen.dart';
 import 'package:movie_zone/utility/app_colour.dart';
@@ -24,18 +26,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     OnBoardingContent(image: AppContent.onBoard2, description: "Experience quality your tips movies at  ", title: "The best watch \nand quality"),
     OnBoardingContent(image: AppContent.onBoard3, description: "Always experience the world of movie entertainment ", title: "Explore Amazing \nMovies Now")
   ];
-  late PageController controller;
+  PageController? controller;
   int currentIndex=0;
+  bool isCurrentIndexThree = false;
   @override
   void initState() {
+    controller = PageController();
     super.initState();
-    controller=PageController();
   }
   @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
+  // void dispose() {
+  //   controller?.dispose();
+  //   super.dispose();
+  // }
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -48,6 +51,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               debugPrint(val.toString());
               setState(() {
                 currentIndex=val;
+
               });
             },
             itemBuilder: (context,index) {
@@ -87,11 +91,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         const SizedBox(height: AppSpacing.s10,),
                         CustomElevatedButton(text: currentIndex==screenContent.length-1?"Start":"Next",
                           onPress: () {
-                            currentIndex==3?Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> const LoginScreen()),):
-                          controller.animateToPage(
-                              currentIndex++,
-                              duration: const Duration(milliseconds: 100),
+                            currentIndex++;
+                             currentIndex==3?
+                            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> const LoginScreen()),):
+                          controller?.animateToPage(
+                              currentIndex,
+                              duration: const Duration(milliseconds: 1),
                               curve: Curves.easeInOut,);
+
+                          // currentIndex++;
                           },
                         ),
                       ],

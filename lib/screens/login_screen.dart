@@ -23,7 +23,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final FirebaseAuthService _auth = FirebaseAuthService();
-
+  final _formKey = GlobalKey<FormState>();
 
   // final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -44,73 +44,99 @@ class _LoginScreenState extends State<LoginScreen> {
           child: SingleChildScrollView(
             child: Padding(
               padding:  const EdgeInsets.only(top: AppSpacing.s20, left: AppSpacing.s20, right: AppSpacing.s20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                   const Row(
-                    children: [
-                      Text("Welcome to",
-                      style: TextStyle(
-                        fontSize: AppFontSize.h16,
-                        fontWeight: AppFontWeight.w300,
-                        color: AppColor.white
-                      ),
-                      ),
-                      SizedBox(
-                        width: AppSpacing.s5,
-                      ),
-                      Text("Movie Zone",
-                      style: TextStyle(
-                        fontWeight: AppFontWeight.w500,
-                        fontSize: AppFontSize.h16,
-                        color: AppColor.red
-                      ),
-                      )
-                    ],
-                  ),
-                   const SizedBox(height: AppSpacing.s20,),
-                   const Text("Sign in",
-                  style: TextStyle(
-                    fontSize: AppFontSize.h30,
-                    fontWeight: AppFontWeight.w500,
-                    color: AppColor.white,
-                  ),
-                  ),
-                  const  SizedBox(height: AppSpacing.s30,),
-                   ReusableTextField(headText: 'Enter your Email', hintText: 'Your Email', newController: _emailController,),
-                  const SizedBox(height: AppSpacing.s20,),
-                  ReusableTextField(headText: "Enter your password", hintText: "Your password", newController: _passwordController,),
-                  const SizedBox(height: AppSpacing.s5,),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text('Forgot Password?',
-                      style: TextStyle(
-                        fontWeight: AppFontWeight.w300,
-                        fontSize: AppFontSize.h12,
-                        color: AppColor.white,
-                      ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: AppSpacing.s30,),
-                  CustomElevatedButton(text: "Sign in",
-                    onPress:(){
-                    _signIn();
-                    },
-                  ),
-                  const SizedBox(
-                    height: AppSpacing.s30,
-                  ),
-                   CustomRichText(
-                    label1: 'Don\'n have an account?',
-                    label2: 'Sign up',
-                    navigation: (){
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> const SignUpScreen()));
-                    },
-                  )
-                ],
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                     const Row(
+                      children: [
+                        Text("Welcome to",
+                        style: TextStyle(
+                          fontSize: AppFontSize.h16,
+                          fontWeight: AppFontWeight.w300,
+                          color: AppColor.white
+                        ),
+                        ),
+                        SizedBox(
+                          width: AppSpacing.s5,
+                        ),
+                        Text("Movie Zone",
+                        style: TextStyle(
+                          fontWeight: AppFontWeight.w500,
+                          fontSize: AppFontSize.h16,
+                          color: AppColor.red
+                        ),
+                        )
+                      ],
+                    ),
+                     const SizedBox(height: AppSpacing.s20,),
+                     const Text("Sign in",
+                    style: TextStyle(
+                      fontSize: AppFontSize.h30,
+                      fontWeight: AppFontWeight.w500,
+                      color: AppColor.white,
+                    ),
+                    ),
+                    const  SizedBox(height: AppSpacing.s30,),
+                     ReusableTextField(headText: 'Enter your Email',
+                       hintText: 'Your Email',
+                       newController: _emailController,
+                       validate: (text) {
+                           if (text == null || text.isEmpty) {
+                             return "please enter email";
+                           }else if (RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(text)){
+                             return null;
+                           }
+                           return "invalid Email";
+                       },
+
+                     ),
+                    const SizedBox(height: AppSpacing.s20,),
+                    ReusableTextField(headText: "Enter your password",
+                      hintText: "Your password",
+                      newController: _passwordController,
+                      validate: (text) {
+                          if (text == null || text.isEmpty) {
+                            return "please enter password";
+                          } return null;
+                      },
+                    ),
+                    const SizedBox(height: AppSpacing.s5,),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text('Forgot Password?',
+                        style: TextStyle(
+                          fontWeight: AppFontWeight.w300,
+                          fontSize: AppFontSize.h12,
+                          color: AppColor.white,
+                        ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: AppSpacing.s30,),
+                    CustomElevatedButton(text: "Sign in",
+                      onPress:(){
+                      if (_formKey.currentState != null &&_formKey.currentState!.validate()){
+                        _signIn();
+                      }
+
+                      },
+                    ),
+                    const SizedBox(
+                      height: AppSpacing.s30,
+                    ),
+                     CustomRichText(
+                      label1: 'Don\'n have an account?',
+                      label2: 'Sign up',
+                      navigation: (){
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> const SignUpScreen()));
+                      },
+                    )
+                  ],
       ),
+              ),
             ),
           ),
       ),
