@@ -21,11 +21,7 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  List<OnBoardingContent> screenContent=[
-    OnBoardingContent(image: AppContent.onBoard1, description: "watch the best movies and the best series in the world", title: "Welcome To \nMovie Zone"),
-    OnBoardingContent(image: AppContent.onBoard2, description: "Experience quality your tips movies at  ", title: "The best watch \nand quality"),
-    OnBoardingContent(image: AppContent.onBoard3, description: "Always experience the world of movie entertainment ", title: "Explore Amazing \nMovies Now")
-  ];
+
   PageController? controller;
   int currentIndex=0;
   bool isCurrentIndexThree = false;
@@ -46,7 +42,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         child: Container(
           child: PageView.builder(
             controller: controller,
-            itemCount: screenContent.length,
+            itemCount: OnBoardingContent.screenContent().length,
             onPageChanged: (val){
               debugPrint(val.toString());
               setState(() {
@@ -60,7 +56,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   height: MediaQuery.of(context).size.height,
                   decoration:  BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(screenContent[index].image),
+                        image: AssetImage(OnBoardingContent.screenContent()[index].image),
                         fit: BoxFit.cover,
                       )
                   ),
@@ -70,7 +66,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                         Text(screenContent[index].title,
+                         Text(OnBoardingContent.screenContent()[index].title,
                           style: const TextStyle(
                             letterSpacing: 3,
                             color: AppColor.white,
@@ -79,7 +75,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           ),
                         ),
                         const SizedBox(height: AppSpacing.s10,),
-                         Text(screenContent[index].description,
+                         Text(OnBoardingContent.screenContent()[index].description,
                           style: const TextStyle(
                               color: AppColor.white,
                               fontSize: AppFontSize.h12,
@@ -87,9 +83,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           ),
                         ),
                         const SizedBox(height: AppSpacing.s10,),
-                        ReusableIndicator(screenContent: screenContent, currentIndex: currentIndex),
+                        ReusableIndicator(screenContent: OnBoardingContent.screenContent(), currentIndex: currentIndex),
                         const SizedBox(height: AppSpacing.s10,),
-                        CustomElevatedButton(text: currentIndex==screenContent.length-1?"Start":"Next",
+                        CustomElevatedButton(text: currentIndex==OnBoardingContent.screenContent().length-1?"Start":"Next",
                           onPress: () {
                             currentIndex++;
                              currentIndex==3?
@@ -120,4 +116,11 @@ class OnBoardingContent{
   final String title;
   final String description;
   OnBoardingContent({required this.image, required this.description, required this.title});
+ static List<OnBoardingContent> screenContent(){
+    return[
+      OnBoardingContent(image: AppContent.onBoard1, description: "watch the best movies and the best series in the world", title: "Welcome To \nMovie Zone"),
+      OnBoardingContent(image: AppContent.onBoard2, description: "Experience quality your tips movies at  ", title: "The best watch \nand quality"),
+      OnBoardingContent(image: AppContent.onBoard3, description: "Always experience the world of movie entertainment ", title: "Explore Amazing \nMovies Now"),
+    ];
+    }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie_zone/utility/app_colour.dart';
-import 'package:movie_zone/utility/app_content.dart';
 import 'package:movie_zone/utility/app_font_size.dart';
 import 'package:movie_zone/utility/app_font_weight.dart';
 import 'package:movie_zone/utility/app_spacing.dart';

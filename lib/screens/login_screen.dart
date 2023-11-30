@@ -25,7 +25,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final FirebaseAuthService _auth = FirebaseAuthService();
   final _formKey = GlobalKey<FormState>();
 
-  // final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -148,6 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
     String password= _passwordController.text;
 
     User? user = await _auth.signInWithEmailAndPassword(email, password);
+
 
 
     if(user!= null){

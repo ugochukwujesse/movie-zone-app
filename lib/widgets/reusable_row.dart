@@ -7,7 +7,7 @@ import '../utility/app_spacing.dart';
 
 
 class ReusableRow extends StatelessWidget {
-   ReusableRow({ required this.isNextIcon, required this.icon, required this.description, required this.isCircleAvater,
+   const ReusableRow({ required this.isNextIcon, required this.icon, required this.description, required this.isCircleAvater,
     super.key,
   });
  final bool isNextIcon;

@@ -18,7 +18,7 @@ class MovieZone extends StatefulWidget {
 }
 
 class _MovieZoneState extends State<MovieZone> {
-  var auth=FirebaseAuth.instance;
+  final auth=FirebaseAuth.instance;
   bool isLogin = false;
 
   checkIfLogin(){

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movie_zone/model/get_all_top_rated_movies_model.dart';
 import 'package:movie_zone/screens/about_screen.dart';
 import 'package:movie_zone/screens/profile_screen.dart';
 import 'package:movie_zone/service/movie_service.dart';
@@ -56,19 +55,19 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 15,),
+                    const SizedBox(width: 15,),
                     GestureDetector(
                       onTap: (){
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ProfileScreen()));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const ProfileScreen()));
                       },
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
                           border: Border.all(width: 1, color: AppColor.white,)
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: const Icon(Icons.person_outline_rounded, color: AppColor.white,),
+                        child: const Padding(
+                          padding:  EdgeInsets.all(8),
+                          child:  Icon(Icons.person_outline_rounded, color: AppColor.white,),
                         ),
                       ),
                     )
@@ -171,7 +170,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                 width: 300,
                                 child: GestureDetector(
                                   onTap: (){
-                                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const AboutScreen()));
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>  AboutScreen(selectedMovies:
+                                    MyMovieDetailModel(
+                                        image: snapshot.data!=null? snapshot.data!.d[index].i != null?  snapshot.data!.d[index].i!.imageUrl : "https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg" : 'https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg',
+                                      title: snapshot.data!.d[index].l,
+                                        genre: snapshot.data!.d[index].q?? 'No Title',
+                                        year: snapshot.data!.d[index].y?? 2023,
+                                      actor: snapshot.data!.d[index].s,
+                                    ),
+                                    )));
                                   },
                                   child: ReusableBigMovieCard(
                                     title: data!= null?  snapshot.data!.d[index].l: 'No title',
@@ -223,11 +230,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                    decoration: BoxDecoration(
                                      color: AppColor.ash,
                                      borderRadius: BorderRadius.circular(AppSpacing.s10),
-                                     image:   const DecorationImage(
-                                       image: NetworkImage(""),
-                                       fit: BoxFit.fill,
-                                     ),
-
                                    ),
                                  ),
                                ),
@@ -293,9 +295,24 @@ class _HomeScreenState extends State<HomeScreen> {
                             itemCount: snapshot.data!.d.length,
                               itemBuilder: (context, index){
                               return
-                                  ReusableMovieCard(title: snapshot.data!.d[index].l,
-                                      genre: snapshot.data!.d[index].q,
-                                    image: snapshot.data!=null? snapshot.data!.d[index].i != null?  snapshot.data!.d[index].i!.imageUrl : "https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg" : 'https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg',
+                                  GestureDetector(
+                                    onTap: (){
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=> AboutScreen(selectedMovies:
+                                      MyMovieDetailModel(
+                                          image: snapshot.data!=null? snapshot.data!.d[index].i != null?  snapshot.data!.d[index].i!.imageUrl : "https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg" : 'https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg',
+                                          title: snapshot.data!.d[index].l,
+                                          genre: snapshot.data!.d[index].q?? 'No Title',
+                                          year: snapshot.data!.d[index].y?? 2023,
+                                          actor: snapshot.data!.d[index].s,
+                                      ),
+                                      ),
+                                      ),
+                                      );
+                                    },
+                                    child: ReusableMovieCard(title: snapshot.data!.d[index].l,
+                                        genre: snapshot.data!.d[index].q,
+                                      image: snapshot.data!=null? snapshot.data!.d[index].i != null?  snapshot.data!.d[index].i!.imageUrl : "https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg" : 'https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg',
+                                    ),
                                   );
                           }
                           ),
@@ -339,11 +356,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                        decoration: BoxDecoration(
                                          color: AppColor.ash,
                                          borderRadius: BorderRadius.circular(AppSpacing.s10),
-                                         image:   const DecorationImage(
-                                           image: NetworkImage(""),
-                                           fit: BoxFit.fill,
-                                         ),
-
                                        ),
                                      ),
                                    ),
@@ -410,9 +422,24 @@ class _HomeScreenState extends State<HomeScreen> {
                            itemCount: snapshot.data!.d.length,
                              itemBuilder: (context, index){
                                return
-                                  ReusableMovieCard(title: snapshot.data!.d[index].l,
-                                    genre:snapshot.data!.d[index].q??="movie",
-                                    image:snapshot.data!=null? snapshot.data!.d[index].i != null?  snapshot.data!.d[index].i!.imageUrl : "https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg" : 'https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg',
+                                  GestureDetector(
+                                    onTap: (){
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=> AboutScreen(selectedMovies:
+                                      MyMovieDetailModel(
+                                        image: snapshot.data!=null? snapshot.data!.d[index].i != null?  snapshot.data!.d[index].i!.imageUrl : "https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg" : 'https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg',
+                                        title: snapshot.data!.d[index].l,
+                                        genre: snapshot.data!.d[index].q?? 'No Title',
+                                        year: snapshot.data!.d[index].y?? 2023,
+                                        actor: snapshot.data!.d[index].s,
+                                      ),
+                                      ),
+                                      ),
+                                      );
+                                    },
+                                    child: ReusableMovieCard(title: snapshot.data!.d[index].l,
+                                      genre:snapshot.data!.d[index].q??="movie",
+                                      image:snapshot.data!=null? snapshot.data!.d[index].i != null?  snapshot.data!.d[index].i!.imageUrl : "https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg" : 'https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg',
+                                    ),
                                   );
                              }
                          ),
@@ -456,11 +483,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                         decoration: BoxDecoration(
                                           color: AppColor.ash,
                                           borderRadius: BorderRadius.circular(AppSpacing.s10),
-                                          image:   const DecorationImage(
-                                            image: NetworkImage(""),
-                                            fit: BoxFit.fill,
-                                          ),
-
                                         ),
                                       ),
                                     ),
@@ -526,10 +548,25 @@ class _HomeScreenState extends State<HomeScreen> {
                             itemCount: snapshot.data!.d.length,
                             itemBuilder: (context, index){
                           return
-                              ReusableMovieCard(
-                                  title: snapshot.data!.d[index].l,
-                                  genre: snapshot.data!.d[index].q??="Animation",
-                                  image: snapshot.data!=null? snapshot.data!.d[index].i != null?  snapshot.data!.d[index].i!.imageUrl : "https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg" : 'https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg',
+                              GestureDetector(
+                                onTap: (){
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AboutScreen(selectedMovies:
+                                  MyMovieDetailModel(
+                                    image: snapshot.data!=null? snapshot.data!.d[index].i != null?  snapshot.data!.d[index].i!.imageUrl : "https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg" : 'https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg',
+                                    title: snapshot.data!.d[index].l,
+                                    genre: snapshot.data!.d[index].q?? 'No Title',
+                                    year: snapshot.data!.d[index].y?? 2023,
+                                    actor: snapshot.data!.d[index].s,
+                                  ),
+                                  )
+                                  ),
+                                  );
+                                },
+                                child: ReusableMovieCard(
+                                    title: snapshot.data!.d[index].l,
+                                    genre: snapshot.data!.d[index].q??="Animation",
+                                    image: snapshot.data!=null? snapshot.data!.d[index].i != null?  snapshot.data!.d[index].i!.imageUrl : "https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg" : 'https://www.malaco.com/wp-content/uploads/2016/06/no-photo-available-black-profile.jpg',
+                                ),
                               );
                         }
                         ),
