@@ -19,7 +19,10 @@ A new Flutter project.
 |:-----------------------------------------------------------:|:--------------------------------------------------------------:|
 | <img src="assets/screenshots/about_screen.png" width="500"> | <img src="assets/screenshots/settings_screen.png" width="500"> |
 
-## Features 
-   Authentication(Login)
-   Add User(SignUp)
-   User can view movie information 
+## Features
+
+• Authentication (Login)
+
+• Add User (SignUp)
+
+• User can view movie information 

@@ -24,7 +24,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+                  children: [
           GestureDetector(
             onTap: (){Navigator.of(context).pop();},
             child: const Padding(
@@ -60,7 +60,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             isCircleAvater: true,
           ),
           const SizedBox(height: AppSpacing.s30,),
-         const Divider(
+                   const Divider(
             height: 3,
             color: AppColor.ash,
           ),
@@ -108,10 +108,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 icon: const Icon(Icons.logout, color: AppColor.white,size: 30,),
                 description: "Sign out",
                 isCircleAvater: false),
-          )
+          ),
 
-        ],
-      ),
+                  ],
+                ),
       ),
     );
   }
