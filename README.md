@@ -15,9 +15,9 @@ A new Flutter project.
 |:------------------------------------------------------------:|:----------------------------------------------------------:|
 | <img src="assets/screenshots/signup_screen.png" width="500"> | <img src="assets/screenshots/home_screen.png" width="500"> |
 
-|                        About Screen                        |                          Home Screen                           |
-|:----------------------------------------------------------:|:--------------------------------------------------------------:|
-| <img src="assets/screenshot/about_screen.png" width="500"> | <img src="assets/screenshots/settings_screen.png" width="500"> |
+|                        About Screen                         |                          Home Screen                           |
+|:-----------------------------------------------------------:|:--------------------------------------------------------------:|
+| <img src="assets/screenshots/about_screen.png" width="500"> | <img src="assets/screenshots/settings_screen.png" width="500"> |
 
 ## Features 
    Authentication(Login)
