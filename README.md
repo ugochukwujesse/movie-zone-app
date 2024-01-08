@@ -7,8 +7,8 @@ A new Flutter project.
    
 ## Screenshots
 
-|                        Onboarding Screen                         |                        Login Screen                         |
-|:----------------------------------------------------------------:|:-----------------------------------------------------------:|
+|                        Onboarding Screen                        |                        Login Screen                        |
+|:---------------------------------------------------------------:|:----------------------------------------------------------:|
 | <img src="assets/screenshots/onboarding_screen.png" width="500"> | <img src="assets/screenshots/login_screen.png" width="500"> |
 
 |                        Signup Screen                         |                        Home Screen                         |
