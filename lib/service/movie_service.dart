@@ -36,6 +36,8 @@ class MovieService{
     final headers={
       'X-RapidAPI-Key': 'cbb0bb06b2msh6b6de00297097fdp1cc0e5jsndeeb5e3ce220',
     };
+
+
     final response = await http.
     get(Uri.parse('https://imdb8.p.rapidapi.com/auto-complete?q=2023'),headers: headers);
     debugPrint(response.body);

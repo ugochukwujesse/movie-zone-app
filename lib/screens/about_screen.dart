@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movie_zone/model/get_all_new_movies.dart';
-import 'package:movie_zone/model/get_all_party.dart';
 import 'package:movie_zone/service/movie_service.dart';
 import 'package:movie_zone/utility/app_colour.dart';
 import 'package:movie_zone/utility/app_font_size.dart';

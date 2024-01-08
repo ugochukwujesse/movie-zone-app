@@ -2,15 +2,24 @@
 
 A new Flutter project.
 
-## Getting Started
+## Description
+   this project uses an API to display different movies and other information about the movies. 
+   
+## Screenshots
 
-This project is a starting point for a Flutter application.
+|                        Onboarding Screen                         |                        Login Screen                         |
+|:----------------------------------------------------------------:|:-----------------------------------------------------------:|
+| <img src="assets/screenshots/onboarding_screen.png" width="500"> | <img src="assets/screenshots/login_screen.png" width="500"> |
 
-A few resources to get you started if this is your first Flutter project:
+|                        Signup Screen                         |                        Home Screen                         |
+|:------------------------------------------------------------:|:----------------------------------------------------------:|
+| <img src="assets/screenshots/signup_screen.png" width="500"> | <img src="assets/screenshots/home_screen.png" width="500"> |
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+|                        About Screen                         |                          Home Screen                           |
+|:-----------------------------------------------------------:|:--------------------------------------------------------------:|
+| <img src="assets/screenshots/about_screen.png" width="500"> | <img src="assets/screenshots/settings_screen.png" width="500"> |
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Features 
+   Authentication(Login)
+   Add User(SignUp)
+   User can view movie information 
